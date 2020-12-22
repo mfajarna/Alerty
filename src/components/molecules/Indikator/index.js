@@ -40,8 +40,8 @@ export default Indikator;
 
 const styles = StyleSheet.create({
   container: {
-    width: 165,
-    height: 110,
+    width: '45%',
+    height: '110%',
     backgroundColor: '#CE6262',
     borderRadius: 10,
     paddingHorizontal: 10,
