@@ -9,7 +9,7 @@ import {
 
 const Indikator = ({type, nilai}) => {
   const Icon = () => {
-    if (type === 'Curah Hujan') {
+    if (type === 'Curah Hujan (mm)') {
       return <ICCurahujan style={styles.icon} />;
     }
     if (type === 'Kelembapan Tanah') {
@@ -20,6 +20,10 @@ const Indikator = ({type, nilai}) => {
     }
     if (type === 'Pergeseran Tanah') {
       return <ICPergeseran style={styles.icon} />;
+    }
+    if(type === 'PH Tanah')
+    {
+       return <ICKelembapantanah style={styles.icon} />;
     }
     return <ICCurahujan style={styles.icon} />;
   };

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {BtnSignOut, Gap, Indikator, Status} from '../../components';
 import {Fire} from '../../config';
@@ -116,6 +116,7 @@ const Dashboard = ({navigation}) => {
           <Text style={styles.textHeader}>Dashboard</Text>
           <BtnSignOut onPress={signOut} />
         </View>
+        <ScrollView>
         <Gap height={43} />
         <Text style={styles.title}>Environmental Monitoring</Text>
         <Gap height={8} />
@@ -123,7 +124,7 @@ const Dashboard = ({navigation}) => {
           {indikatorsHujan.map((item) => {
             return (
               <Indikator
-                type="Curah Hujan"
+                type="Curah Hujan (mm)"
                 key={item.id}
                 nilai={item.rtcurahhujan}
               />
@@ -160,14 +161,28 @@ const Dashboard = ({navigation}) => {
             );
           })}
         </View>
+        <Gap height={25} />
+        <View style={styles.indikator}>
+              <Indikator
+                type="PH Tanah"
+                nilai={6.5}
+              />
+        </View>
+        <View style={styles.indikator}>
+              <Indikator
+                type="PH Tanah"
+                nilai={6.5}
+              />
+        </View>
         <Gap height={32} />
         <Text style={styles.title}>Status</Text>
         <Gap height={9} />
         <View style={styles.status}>
           {indikatorsStatus.map((item) => {
-            return <Status key={item.id} type={item.status} />;
+            return <Status key={item.id} type={item.status} />
           })}
         </View>
+        </ScrollView>
       </View>
     </>
   );
@@ -200,6 +215,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  indikatorAkhir:{
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },  
   status: {
     alignItems: 'center',
   },
