@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {BtnSignOut, Gap, Indikator, Status} from '../../components';
-import {Fire} from '../../config';
+import firebase from '../../config/Fire'
 import {showNotification} from '../../utils';
 
 const Dashboard = ({navigation}) => {
@@ -19,7 +19,7 @@ const Dashboard = ({navigation}) => {
   const signOut = () => {
     AsyncStorage.removeItem('user').then(res => {
       navigation.reset({index: 0, routes:[{name: 'Login'}]})
-      Fire.auth()
+      firebase.auth()
       .signOut()
       .then(() => {
         console.log('berhasil')
@@ -45,7 +45,7 @@ const Dashboard = ({navigation}) => {
   }, []);
 
   const getDataCurahHujan = () => {
-    Fire.database()
+    firebase.database()
       .ref('Sensor/rtcurahhujan')
       .on('value', (res) => {
         console.log('Data Realtime : ', res.val());
@@ -55,7 +55,7 @@ const Dashboard = ({navigation}) => {
       });
   };
   const getDataKelembapanTanah = () => {
-    Fire.database()
+    firebase.database()
       .ref('Sensor/rtkelembapantanah')
       .on('value', (res) => {
         console.log('Data Realtime : ', res.val());
@@ -66,7 +66,7 @@ const Dashboard = ({navigation}) => {
   };
 
   const getDataKemiringan = () => {
-    Fire.database()
+    firebase.database()
       .ref('Sensor/rtkemiringan')
       .on('value', (res) => {
         console.log('Data Realtime Kemiringan : ', res.val());
@@ -77,7 +77,7 @@ const Dashboard = ({navigation}) => {
   };
 
   const getDataPergeseranTanah = () => {
-    Fire.database()
+    firebase.database()
       .ref('Sensor/rtpergeserantanah')
       .on('value', (res) => {
         console.log('Data Realtime : ', res.val());
@@ -88,7 +88,7 @@ const Dashboard = ({navigation}) => {
   };
 
   const getDataStatus = () => {
-    Fire.database()
+    firebase.database()
       .ref('status')
       .on('value', (res) => {
         console.log('Data Status : ', res.val());
@@ -98,7 +98,7 @@ const Dashboard = ({navigation}) => {
       });
   };
 
-  Fire.database()
+  firebase.database()
     .ref('status/1/status')
     .on('value', (res) => {
       var inputStatus = res.val();
@@ -107,12 +107,12 @@ const Dashboard = ({navigation}) => {
 
   console.log(statusIndikator);
 
-  if (statusIndikator === 'bahaya') {
-    showNotification('Alerty', 'Status Bahaya');
-  }
-  if (statusIndikator === 'waspada') {
-    showNotification('Alerty', 'Status Waspada');
-  }
+  // if (statusIndikator === 'bahaya') {
+  //   showNotification('Alerty', 'Status Bahaya');
+  // }
+  // if (statusIndikator === 'waspada') {
+  //   showNotification('Alerty', 'Status Waspada');
+  // }
 
   return (
     <>

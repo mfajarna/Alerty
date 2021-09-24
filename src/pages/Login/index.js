@@ -3,7 +3,7 @@ import {LogBox, StyleSheet, Text, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {ILLogo} from '../../assets/icon';
 import {Button, Gap, Input, Loading, TextLink} from '../../components';
-import Fire from '../../config/Fire';
+import firebase from '../../config/Fire'
 import {storeData, useForm} from '../../utils';
 
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
@@ -15,13 +15,13 @@ const Login = ({navigation}) => {
 
   const login = () => {
     setLoading(true);
-    Fire.auth()
+    firebase.auth()
       .signInWithEmailAndPassword(form.email, form.password)
       .then((res) => {
         console.log('success', res);
         setLoading(false);
         setForm('reset');
-        Fire.database()
+        firebase.database()
           .ref(`users/${res.user.uid}/data`)
           .once('value')
           .then((resDB) => {

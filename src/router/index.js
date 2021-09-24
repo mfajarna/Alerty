@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Grafik from '../pages/Grafik';
 import About from '../pages/About';
 import { CustomButtomNavigator } from '../components';
+import TestNotif from '../pages/TesNotif';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -15,7 +16,7 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <CustomButtomNavigator {...props} />}>
       <Tab.Screen name="Dashboard" component={Dashboard} />
-      <Tab.Screen name="Maps" component={Grafik} />
+      <Tab.Screen name="Maps" component={TestNotif} />
       <Tab.Screen name="About Us" component={About} />
     </Tab.Navigator>
   );
@@ -62,6 +63,11 @@ const Router = () => {
       <Stack.Screen
         name="About"
         component={About}
+        options={{headerShown: false}}
+      />
+        <Stack.Screen
+        name="TestNotif"
+        component={TestNotif}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

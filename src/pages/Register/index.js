@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Button, Gap, Header, Input, Loading} from '../../components';
-import Fire from '../../config/Fire';
+import firebase from '../../config/Fire'
 import {storeData, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
@@ -19,7 +19,7 @@ const Register = ({navigation}) => {
   const onRegister = () => {
     console.log(form);
 
-    Fire.auth()
+    firebase.auth()
       .createUserWithEmailAndPassword(form.email, form.password)
       .then((success) => {
         setLoading(false);
@@ -35,7 +35,7 @@ const Register = ({navigation}) => {
           namaLengkap: form.namaLengkap,
           pekerjaan: form.pekerjaan,
         };
-        Fire.database()
+        firebase.database()
           .ref('users/' + success.user.uid + '/')
           .set({data});
 
