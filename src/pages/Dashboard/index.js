@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
@@ -16,10 +17,12 @@ const Dashboard = ({navigation}) => {
   var statusIndikator = '';
 
   const signOut = () => {
-    Fire.auth()
+    AsyncStorage.removeItem('user').then(res => {
+      navigation.reset({index: 0, routes:[{name: 'Login'}]})
+      Fire.auth()
       .signOut()
       .then(() => {
-        navigation.replace('Login');
+        console.log('berhasil')
       })
       .catch((err) => {
         showMessage({
@@ -29,6 +32,8 @@ const Dashboard = ({navigation}) => {
           color: '#FFFF',
         });
       });
+    })
+
   };
 
   useEffect(() => {
@@ -116,7 +121,7 @@ const Dashboard = ({navigation}) => {
           <Text style={styles.textHeader}>Dashboard</Text>
           <BtnSignOut onPress={signOut} />
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
         <Gap height={43} />
         <Text style={styles.title}>Environmental Monitoring</Text>
         <Gap height={8} />
@@ -133,7 +138,7 @@ const Dashboard = ({navigation}) => {
           {indikatorsKelembapan.map((item) => {
             return (
               <Indikator
-                type="Kelembapan Tanah"
+                type="Kelembaban Tanah"
                 key={item.id}
                 nilai={item.rtkelembapantanah}
               />
@@ -167,11 +172,16 @@ const Dashboard = ({navigation}) => {
                 type="PH Tanah"
                 nilai={6.5}
               />
-        </View>
-        <View style={styles.indikator}>
               <Indikator
-                type="PH Tanah"
-                nilai={6.5}
+                type="Kelembaban Udara"
+                nilai={45}
+              />
+        </View>
+        <Gap height={25} />
+        <View style={styles.indikatorAkhir}>
+              <Indikator
+                type="Suhu Udara"
+                nilai={23}
               />
         </View>
         <Gap height={32} />
@@ -182,6 +192,7 @@ const Dashboard = ({navigation}) => {
             return <Status key={item.id} type={item.status} />
           })}
         </View>
+        <Gap height={25} />
         </ScrollView>
       </View>
     </>

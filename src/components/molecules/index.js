@@ -7,6 +7,7 @@ import BtnSignOut from './BtnSignOut';
 import Indikator from './Indikator';
 import Status from './Status';
 import Loading from './Loading';
+import CustomButtomNavigator from './CustomBottomNavigator';
 
 export {
   ButtonGetStarted,
@@ -18,4 +19,5 @@ export {
   Indikator,
   Status,
   Loading,
+  CustomButtomNavigator
 };

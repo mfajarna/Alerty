@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ICHeader} from '../../assets/illustration';
 import {ButtonGetStarted, Gap} from '../../components';
+import { getData } from '../../utils';
 
 const GetStarted = ({navigation}) => {
+
+  useEffect(() => {
+    getData('user').then(res => {
+      if(res)
+      {
+        navigation.reset({index: 0, routes:[{name: 'MainApp'}]})
+      }
+    })
+  },[])
   return (
     <View style={styles.container}>
       <View style={styles.header}>

@@ -42,7 +42,7 @@ const Register = ({navigation}) => {
         storeData('user', data);
         // setLoading(true);
 
-        navigation.navigate('Login');
+        navigation.reset({index: 0, routes:[{name:'MainApp'}]})
         console.log('Sukses', success);
       })
       .catch((error) => {

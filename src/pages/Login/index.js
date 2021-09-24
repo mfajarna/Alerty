@@ -28,7 +28,7 @@ const Login = ({navigation}) => {
             console.log('Data User', resDB.val());
             if (resDB.val()) {
               storeData('user', form);
-              navigation.navigate('Dashboard');
+              navigation.reset({index: 0, routes:[{name:'MainApp'}]})
             }
           });
       })
