@@ -3,8 +3,9 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {BtnSignOut, Gap, Indikator, Status} from '../../components';
+import ListPerangkat from '../../components/molecules/ListPerangkat';
 import firebase from '../../config/Fire'
-import {showNotification} from '../../utils';
+
 
 const Dashboard = ({navigation}) => {
   const [indikatorsHujan, setIndikatorsHujan] = useState([]);
@@ -36,76 +37,76 @@ const Dashboard = ({navigation}) => {
 
   };
 
-  useEffect(() => {
-    getDataCurahHujan();
-    getDataKelembapanTanah();
-    getDataKemiringan();
-    getDataPergeseranTanah();
-    getDataStatus();
-  }, []);
+  // useEffect(() => {
+  //   getDataCurahHujan();
+  //   getDataKelembapanTanah();
+  //   getDataKemiringan();
+  //   getDataPergeseranTanah();
+  //   getDataStatus();
+  // }, []);
 
-  const getDataCurahHujan = () => {
-    firebase.database()
-      .ref('Sensor/rtcurahhujan')
-      .on('value', (res) => {
-        console.log('Data Realtime : ', res.val());
-        if (res.val()) {
-          setIndikatorsHujan(res.val());
-        }
-      });
-  };
-  const getDataKelembapanTanah = () => {
-    firebase.database()
-      .ref('Sensor/rtkelembapantanah')
-      .on('value', (res) => {
-        console.log('Data Realtime : ', res.val());
-        if (res.val()) {
-          setIndikatorsKelembapan(res.val());
-        }
-      });
-  };
+  // const getDataCurahHujan = () => {
+  //   firebase.database()
+  //     .ref('Sensor/rtcurahhujan')
+  //     .on('value', (res) => {
+  //       console.log('Data Realtime : ', res.val());
+  //       if (res.val()) {
+  //         setIndikatorsHujan(res.val());
+  //       }
+  //     });
+  // };
+  // const getDataKelembapanTanah = () => {
+  //   firebase.database()
+  //     .ref('Sensor/rtkelembapantanah')
+  //     .on('value', (res) => {
+  //       console.log('Data Realtime : ', res.val());
+  //       if (res.val()) {
+  //         setIndikatorsKelembapan(res.val());
+  //       }
+  //     });
+  // };
 
-  const getDataKemiringan = () => {
-    firebase.database()
-      .ref('Sensor/rtkemiringan')
-      .on('value', (res) => {
-        console.log('Data Realtime Kemiringan : ', res.val());
-        if (res.val()) {
-          setIndikatorsKemiringan(res.val());
-        }
-      });
-  };
+  // const getDataKemiringan = () => {
+  //   firebase.database()
+  //     .ref('Sensor/rtkemiringan')
+  //     .on('value', (res) => {
+  //       console.log('Data Realtime Kemiringan : ', res.val());
+  //       if (res.val()) {
+  //         setIndikatorsKemiringan(res.val());
+  //       }
+  //     });
+  // };
 
-  const getDataPergeseranTanah = () => {
-    firebase.database()
-      .ref('Sensor/rtpergeserantanah')
-      .on('value', (res) => {
-        console.log('Data Realtime : ', res.val());
-        if (res.val()) {
-          setIndikatorsPergeseranTanah(res.val());
-        }
-      });
-  };
+  // const getDataPergeseranTanah = () => {
+  //   firebase.database()
+  //     .ref('Sensor/rtpergeserantanah')
+  //     .on('value', (res) => {
+  //       console.log('Data Realtime : ', res.val());
+  //       if (res.val()) {
+  //         setIndikatorsPergeseranTanah(res.val());
+  //       }
+  //     });
+  // };
 
-  const getDataStatus = () => {
-    firebase.database()
-      .ref('status')
-      .on('value', (res) => {
-        console.log('Data Status : ', res.val());
-        if (res.val()) {
-          setIndikatorsStatus(res.val());
-        }
-      });
-  };
+  // const getDataStatus = () => {
+  //   firebase.database()
+  //     .ref('status')
+  //     .on('value', (res) => {
+  //       console.log('Data Status : ', res.val());
+  //       if (res.val()) {
+  //         setIndikatorsStatus(res.val());
+  //       }
+  //     });
+  // };
 
-  firebase.database()
-    .ref('status/1/status')
-    .on('value', (res) => {
-      var inputStatus = res.val();
-      statusIndikator = inputStatus;
-    });
+  // firebase.database()
+  //   .ref('status/1/status')
+  //   .on('value', (res) => {
+  //     var inputStatus = res.val();
+  //     statusIndikator = inputStatus;
+  //   });
 
-  console.log(statusIndikator);
+  // console.log(statusIndikator);
 
   // if (statusIndikator === 'bahaya') {
   //   showNotification('Alerty', 'Status Bahaya');
@@ -115,87 +116,25 @@ const Dashboard = ({navigation}) => {
   // }
 
   return (
-    <>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.textHeader}>Dashboard</Text>
           <BtnSignOut onPress={signOut} />
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
-        <Gap height={43} />
-        <Text style={styles.title}>Environmental Monitoring</Text>
-        <Gap height={8} />
-        <View style={styles.indikator}>
-          {indikatorsHujan.map((item) => {
-            return (
-              <Indikator
-                type="Curah Hujan (mm)"
-                key={item.id}
-                nilai={item.rtcurahhujan}
-              />
-            );
-          })}
-          {indikatorsKelembapan.map((item) => {
-            return (
-              <Indikator
-                type="Kelembaban Tanah"
-                key={item.id}
-                nilai={item.rtkelembapantanah}
-              />
-            );
-          })}
-        </View>
-        <Gap height={25} />
-        <View style={styles.indikator}>
-          {indikatorsKemiringan.map((item) => {
-            return (
-              <Indikator
-                type="Kemiringan"
-                key={item.id}
-                nilai={item.rtkemiringan}
-              />
-            );
-          })}
-          {indikatorsPergeseranTanah.map((item) => {
-            return (
-              <Indikator
-                type="Pergeseran Tanah"
-                key={item.id}
-                nilai={item.rtpergeserantanah}
-              />
-            );
-          })}
-        </View>
-        <Gap height={25} />
-        <View style={styles.indikator}>
-              <Indikator
-                type="PH Tanah"
-                nilai={6.5}
-              />
-              <Indikator
-                type="Kelembaban Udara"
-                nilai={45}
-              />
-        </View>
-        <Gap height={25} />
-        <View style={styles.indikatorAkhir}>
-              <Indikator
-                type="Suhu Udara"
-                nilai={23}
-              />
-        </View>
-        <Gap height={32} />
-        <Text style={styles.title}>Status</Text>
-        <Gap height={9} />
-        <View style={styles.status}>
-          {indikatorsStatus.map((item) => {
-            return <Status key={item.id} type={item.status} />
-          })}
-        </View>
-        <Gap height={25} />
-        </ScrollView>
+        <Gap height={20} />
+       <View style={styles.content}>
+         <Text style={styles.text}>List Perangkat</Text>
+         <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+         <Gap height={10} />
+          <ListPerangkat nama="Perangkat 1" />
+          <ListPerangkat nama="Perangkat 2" />
+          <ListPerangkat nama="Perangkat 3" />
+          <ListPerangkat nama="Perangkat 4" />
+          </View>
+          </ScrollView>
+       </View>
       </View>
-    </>
   );
 };
 
@@ -233,4 +172,12 @@ const styles = StyleSheet.create({
   status: {
     alignItems: 'center',
   },
+  text:{
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 14,
+    color: '#F05454',
+  },
+  content:{
+    flex: 1
+  }
 });

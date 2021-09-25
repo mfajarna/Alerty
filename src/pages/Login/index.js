@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {LogBox, StyleSheet, Text, View} from 'react-native';
+import {LogBox, StyleSheet, Text, View, ScrollView} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {ILLogo} from '../../assets/icon';
 import {Button, Gap, Input, Loading, TextLink} from '../../components';
@@ -45,6 +45,7 @@ const Login = ({navigation}) => {
   };
   return (
     <>
+    <ScrollView>
       <View style={styles.container}>
         <ILLogo />
         <Gap height={36} />
@@ -71,7 +72,9 @@ const Login = ({navigation}) => {
         />
       </View>
       {loading && <Loading />}
+      </ScrollView>
     </>
+    
   );
 };
 
