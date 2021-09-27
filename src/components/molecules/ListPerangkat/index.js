@@ -1,10 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Ic_micro } from '../../../assets/icon'
 
 const ListPerangkat = ({nama, onPress}) => {
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Text style={styles.text}>{nama}</Text>
+            <View style={{ flexDirection: 'row',alignItems: 'center', flex: 1, paddingLeft: 20 }}>
+                <View style={{ marginRight: 10 }}>
+                    <Ic_micro />
+                </View>
+                <Text style={styles.text}>{nama}</Text>
+            </View>
         </TouchableOpacity>
     )
 }
@@ -30,7 +36,8 @@ const styles = StyleSheet.create({
     },
     text:{
         fontFamily: 'Poppins-SemiBold',
-        fontSize: 14,
+        fontSize: 18,
         color: 'white',
+        
       }
 })

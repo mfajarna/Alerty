@@ -8,6 +8,7 @@ import Grafik from '../pages/Grafik';
 import About from '../pages/About';
 import { CustomButtomNavigator } from '../components';
 import TestNotif from '../pages/TesNotif';
+import DetailPerangkat from '../pages/DetailPerangkat';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -68,6 +69,11 @@ const Router = () => {
         <Stack.Screen
         name="TestNotif"
         component={TestNotif}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DetailPerangkat"
+        component={DetailPerangkat}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

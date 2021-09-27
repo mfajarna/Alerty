@@ -1,69 +1,31 @@
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Polygon } from 'react-native-maps';
 import firebase from '../../config/Fire'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useEffect } from 'react'
+import { data } from '../../config/koordinat/data';
 
 const Grafik = () => {
 
-  const[latitude1,setLatitude1] = useState(0);
-  const[longitude1,setLongitude1] = useState(0);
-
-  const[latitude2,setLatitude2] = useState(0);
-  const[longitude2,setLongitude2] = useState(0);
-
-   var alat1 = {
-     latitude: latitude1,
-     longitude: longitude1,
-   }
-
-   var alat2 = {
-    latitude: latitude2,
-    longitude: longitude2,
-  }
-
-  var alat3 = {
-    latitude: 0,
-    longitude: 0,
-  }
-
-  var alat4 = {
-    latitude: 0,
-    longitude: 0,
-  }
-
-  useEffect(() => {
-    getDataMapsAlat1()
-    getDataMapsAlat2()
-  },[])
-
-  
-
-  const getDataMapsAlat1 = () => {
-    firebase.database()
-      .ref('maps/lokasi/alat1/')
-      .on('value', res => {
-        console.log('alat1', res.val());
-        var data = res.val();
-
-          setLatitude1(data.latitude)
-          setLongitude1(data.longitude)
-        
-      })
-  }
-
-  const getDataMapsAlat2 = () => {
-    firebase.database()
-      .ref('maps/lokasi/alat2/')
-      .on('value', res => {
-        var data = res.val();
-
-          setLatitude2(data.latitude)
-          setLongitude2(data.longitude)
-        
-      })
-  }
-
+  var[coordinatesMap,setCoordinatesMap] = useState(
+    [
+    {
+      latitude: -7.1880113,
+      longitude: 107.6306125
+    },
+    {
+      latitude: -7.187863602088806,
+      longitude : 107.62958294045934
+    },
+    {
+      latitude: -7.187028006471592,
+      longitude : 107.62946492326162
+    },
+    {
+      latitude: -7.187156108040515,
+      longitude : 107.63088190333157
+    }
+  ])
 
     return (
         <View style={styles.container}>
@@ -74,16 +36,30 @@ const Grafik = () => {
         <MapView
                         style={StyleSheet.absoluteFill}
                             initialRegion={{
-                            latitude: 0,
-                            longitude: 0,
+                            latitude: -7.1880113,
+                            longitude: 107.6306125,
                             latitudeDelta: 0.009,
                             longitudeDelta: 0.009
                         }}
                     >
-                    {/* <Marker coordinate={{ 
-                        latitude: 0, 
-                        longitude: 0
-                      }} /> */}
+
+                        <Polygon
+                          coordinates={coordinatesMap}
+                          fillColor={'rgba(100,100,200,0.3)'}
+                        />
+
+                     {data.map(item => {
+                        return(
+                          
+                          <Marker
+                          key={item.id}
+                          coordinate={item.coords}
+                          >
+                          <Text style={styles.textMarker}>{item.nama}</Text>
+                          </Marker>  
+                    
+                          )
+                      })} 
                     </MapView>
         </View>
         </View>
@@ -110,5 +86,9 @@ const styles = StyleSheet.create({
       },
       content:{
         flex: 1
+      },
+      textMarker:{
+        fontFamily: 'Poppins-Regular',
+        color: '#F05454',
       }
 })

@@ -13,7 +13,7 @@ const Splash = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ILLogo />
-      <Text style={styles.text}>ALERTY</Text>
+      <Text style={styles.text}>WEKER</Text>
     </View>
   );
 };

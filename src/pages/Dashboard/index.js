@@ -17,6 +17,10 @@ const Dashboard = ({navigation}) => {
   const [indikatorsStatus, setIndikatorsStatus] = useState([]);
   var statusIndikator = '';
 
+  const[perangkat1,setPerangkat1] = useState({});
+  const[perangkat2,setPerangkat2] = useState({});
+  const[perangkat3,setPerangkat3] = useState({});
+  const[perangkat4,setPerangkat4] = useState({});
   const signOut = () => {
     AsyncStorage.removeItem('user').then(res => {
       navigation.reset({index: 0, routes:[{name: 'Login'}]})
@@ -37,13 +41,58 @@ const Dashboard = ({navigation}) => {
 
   };
 
-  // useEffect(() => {
+  useEffect(() => {
   //   getDataCurahHujan();
   //   getDataKelembapanTanah();
   //   getDataKemiringan();
   //   getDataPergeseranTanah();
   //   getDataStatus();
-  // }, []);
+
+  getDataPerangkat1();
+  getDataPerangkat2();
+  getDataPerangkat3();
+  getDataPerangkat4();
+   }, []);
+
+
+  const getDataPerangkat1 = () => {
+    firebase.database().ref('Perangkat1/')
+    .on('value', res => {
+      console.log(res.val())
+
+      setPerangkat1(res.val())
+    })
+  }
+
+    const getDataPerangkat2 = () => {
+    firebase.database().ref('Perangkat2/')
+    .on('value', res => {
+      console.log(res.val())
+
+      setPerangkat2(res.val())
+    })
+  }
+
+    const getDataPerangkat3 = () => {
+    firebase.database().ref('Perangkat3/')
+    .on('value', res => {
+      console.log(res.val())
+
+      setPerangkat3(res.val())
+    })
+  }
+
+  const getDataPerangkat4 = () => {
+    firebase.database().ref('Perangkat4/')
+    .on('value', res => {
+      console.log(res.val())
+
+      setPerangkat4(res.val())
+    })
+  }
+
+
+
 
   // const getDataCurahHujan = () => {
   //   firebase.database()
@@ -127,10 +176,10 @@ const Dashboard = ({navigation}) => {
          <ScrollView showsVerticalScrollIndicator={false}>
           <View>
          <Gap height={10} />
-          <ListPerangkat nama="Perangkat 1" />
-          <ListPerangkat nama="Perangkat 2" />
-          <ListPerangkat nama="Perangkat 3" />
-          <ListPerangkat nama="Perangkat 4" />
+          <ListPerangkat nama="Perangkat 1" onPress={() => navigation.navigate('DetailPerangkat',perangkat1 )}/>
+          <ListPerangkat nama="Perangkat 2" onPress={() => navigation.navigate('DetailPerangkat',perangkat2 )}/>
+          <ListPerangkat nama="Perangkat 3" onPress={() => navigation.navigate('DetailPerangkat',perangkat3 )}/>
+          <ListPerangkat nama="Perangkat 4" onPress={() => navigation.navigate('DetailPerangkat',perangkat4 )}/>
           </View>
           </ScrollView>
        </View>

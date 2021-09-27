@@ -44,12 +44,11 @@ export default Indikator;
 
 const styles = StyleSheet.create({
   container: {
-    width: '45%',
-    height: '110%',
+    height: 120,
     backgroundColor: '#CE6262',
     borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 9,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
   title: {
     fontFamily: 'Poppins-SemiBold',
