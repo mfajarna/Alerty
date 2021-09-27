@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, Alert} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {BtnSignOut, Gap, Indikator, Status} from '../../components';
 import ListPerangkat from '../../components/molecules/ListPerangkat';
 import firebase from '../../config/Fire'
-
+import NotifService from '../../NotifService';
 
 const Dashboard = ({navigation}) => {
   const [indikatorsHujan, setIndikatorsHujan] = useState([]);
@@ -16,6 +16,27 @@ const Dashboard = ({navigation}) => {
   );
   const [indikatorsStatus, setIndikatorsStatus] = useState([]);
   var statusIndikator = '';
+  const[registerToken,setRegisterToken] = useState('');
+
+      const onRegister = (token) => {
+        setRegisterToken(token.token);
+    }
+
+      const onNotif = (notif) => {
+        Alert.alert(notif.title, notif.message);
+    }
+
+
+  const notif = new NotifService(onRegister,onNotif);
+
+  // const a = 1;
+
+  // if(a == 1)
+  // {
+  //    notif.localNotif('Perangkat 1 Status : Aman');
+  // }
+
+  
 
   const[perangkat1,setPerangkat1] = useState({});
   const[perangkat2,setPerangkat2] = useState({});
@@ -40,6 +61,39 @@ const Dashboard = ({navigation}) => {
     })
 
   };
+
+  if(perangkat1.status === 'bahaya')
+  {
+    notif.localNotif('Perangkat 1 Status : Bahaya');
+  }
+  if(perangkat1.status === 'waspada')
+  {
+    notif.localNotif('Perangkat 1 Status : Waspada');
+  }
+    if(perangkat2.status === 'bahaya')
+  {
+    notif.localNotif('Perangkat 2 Status : Bahaya');
+  }
+  if(perangkat2.status === 'waspada')
+  {
+    notif.localNotif('Perangkat 2 Status : Waspada');
+  }
+  if(perangkat3.status === 'bahaya')
+  {
+    notif.localNotif('Perangkat 3 Status : Bahaya');
+  }
+  if(perangkat3.status === 'waspada')
+  {
+    notif.localNotif('Perangkat 3 Status : Waspada');
+  }
+    if(perangkat4.status === 'bahaya')
+  {
+    notif.localNotif('Perangkat 4 Status : Bahaya');
+  }
+  if(perangkat4.status === 'waspada')
+  {
+    notif.localNotif('Perangkat 4 Status : Waspada');
+  }
 
   useEffect(() => {
   //   getDataCurahHujan();

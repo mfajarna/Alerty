@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Gap, Header, Indikator } from '../../components'
+import { Gap, Header, Indikator, Status } from '../../components'
 
 const DetailPerangkat = ({navigation, route}) => {
 
@@ -32,6 +32,9 @@ const DetailPerangkat = ({navigation, route}) => {
                         nilai={dataPerangkat.pergeserantanah}
                     />
                 </View>
+                <Gap height={15} />
+                <Text style={styles.text}>Status Kebencaan</Text>
+                <Status type={dataPerangkat.status}/>
             </View>
         </View>
     )
@@ -48,4 +51,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
   },
+  text:{
+          fontFamily: 'Poppins-SemiBold',
+    fontSize: 14,
+    color: '#F05454',
+  }
 })
