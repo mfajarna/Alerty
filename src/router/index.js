@@ -9,6 +9,7 @@ import About from '../pages/About';
 import { CustomButtomNavigator } from '../components';
 import TestNotif from '../pages/TesNotif';
 import DetailPerangkat from '../pages/DetailPerangkat';
+import Chart from '../pages/Chart';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -18,6 +19,7 @@ const MainApp = () => {
     <Tab.Navigator tabBar={props => <CustomButtomNavigator {...props} />}>
       <Tab.Screen name="Dashboard" component={Dashboard} />
       <Tab.Screen name="Maps" component={Grafik} />
+      <Tab.Screen name="Chart" component={Chart} />
       <Tab.Screen name="About Us" component={About} />
     </Tab.Navigator>
   );
@@ -74,6 +76,11 @@ const Router = () => {
       <Stack.Screen
         name="DetailPerangkat"
         component={DetailPerangkat}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Chart"
+        component={Chart}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

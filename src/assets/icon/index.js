@@ -12,6 +12,8 @@ import Ic_stats_off from './ic_stats_off.svg';
 import Ic_about_on from './ic_about_on.svg';
 import Ic_about_off from './ic_about_off.svg';
 import Ic_micro from './ic_micro.svg';
+import Ic_chart_on from './ic_chart_on.svg';
+import Ic_chart_off from './ic_chart_off.svg';
 
 export {
   ILLogo,
@@ -27,5 +29,7 @@ export {
   Ic_stats_on,
   Ic_about_off,
   Ic_about_on,
-  Ic_micro
+  Ic_micro,
+  Ic_chart_on,
+  Ic_chart_off
 };

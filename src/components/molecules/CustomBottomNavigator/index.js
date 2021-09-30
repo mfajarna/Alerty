@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import { Ic_about_off, Ic_about_on, Ic_home_off, Ic_home_on, Ic_stats_off, Ic_stats_on } from '../../../assets/icon';
+import { Ic_about_off, Ic_about_on, Ic_chart_off, Ic_chart_on, Ic_home_off, Ic_home_on, Ic_stats_off, Ic_stats_on } from '../../../assets/icon';
 
 
 const Icon = ({label, focus}) => {
@@ -11,6 +11,8 @@ const Icon = ({label, focus}) => {
       return focus ? <Ic_stats_on /> : <Ic_stats_off />;
     case 'About Us':
       return focus ? <Ic_about_on /> : <Ic_about_off />;
+    case 'Chart':
+      return focus ? <Ic_chart_on /> : <Ic_chart_off />;
   }
 };
 
