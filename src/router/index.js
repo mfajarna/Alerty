@@ -19,7 +19,6 @@ const MainApp = () => {
     <Tab.Navigator tabBar={props => <CustomButtomNavigator {...props} />}>
       <Tab.Screen name="Dashboard" component={Dashboard} />
       <Tab.Screen name="Maps" component={Grafik} />
-      <Tab.Screen name="Chart" component={Chart} />
       <Tab.Screen name="About Us" component={About} />
     </Tab.Navigator>
   );

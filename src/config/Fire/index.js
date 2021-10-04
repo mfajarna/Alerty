@@ -9,12 +9,13 @@ const config ={
       // messagingSenderId: '821757444296',
       // appId: '1:821757444296:web:6d5d2deb954456582865fd',
       // measurementId: 'G-SW656PFP3S',
-      apiKey: "AIzaSyCz-puOUyzg0gkVlgb_eRNLMJQMNd75tBA",
-      authDomain: "hujan-384e4.firebaseapp.com",
-      databaseURL: "https://hujan-384e4.firebaseio.com",
-      projectId: "hujan-384e4",
-      storageBucket: "hujan-384e4.appspot.com",
-      messagingSenderId: "343494290614"
+      apiKey: "AIzaSyCTqcYoCXdC_dUvuXKb5VPYbWhhkulGOoE",
+      authDomain: "weker-monitoring-a8638.firebaseapp.com",
+      databaseURL: "https://weker-monitoring-a8638-default-rtdb.firebaseio.com",
+      projectId: "weker-monitoring-a8638",
+      storageBucket: "weker-monitoring-a8638.appspot.com",
+      messagingSenderId: "217218653252",
+      appId: "1:217218653252:web:e11403dda9f5983a833011"
 }
 
 export default !firebase.apps.length ? firebase.initializeApp(config) : firebase.app()
