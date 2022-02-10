@@ -22,7 +22,7 @@
     "react-native-gesture-handler": "^1.8.0",
     "react-native-maps": "^0.28.0",
     "react-native-push-notification": "^7.4.0",
-    "react-native-reanimated": "^1.13.1",
+    "react-native-reanimated": "^2.4.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^2.18.1",
     "react-native-svg": "^12.1.0"

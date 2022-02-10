@@ -30,7 +30,7 @@ const About = ({navigation}) => {
         <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.textHeader}>About Us</Text>
-          <BtnSignOut onPress={signOut} />
+          
         </View>
         <View>
             <Gap height={20} />

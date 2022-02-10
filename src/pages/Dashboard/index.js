@@ -29,38 +29,12 @@ const Dashboard = ({navigation}) => {
 
   const notif = new NotifService(onRegister,onNotif);
 
-  // const a = 1;
 
-  // if(a == 1)
-  // {
-  //    notif.localNotif('Perangkat 1 Status : Aman');
-  // }
-
-  
 
   const[perangkat1,setPerangkat1] = useState({});
   const[perangkat2,setPerangkat2] = useState({});
   const[perangkat3,setPerangkat3] = useState({});
   const[perangkat4,setPerangkat4] = useState({});
-  const signOut = () => {
-    AsyncStorage.removeItem('user').then(res => {
-      navigation.reset({index: 0, routes:[{name: 'Login'}]})
-      firebase.auth()
-      .signOut()
-      .then(() => {
-        console.log('berhasil')
-      })
-      .catch((err) => {
-        showMessage({
-          message: 'Eror Sign Out',
-          type: 'default',
-          backgroundColor: '#CE6262',
-          color: '#FFFF',
-        });
-      });
-    })
-
-  };
 
   if(perangkat1.status === 'bahaya')
   {
@@ -96,11 +70,6 @@ const Dashboard = ({navigation}) => {
   }
 
   useEffect(() => {
-  //   getDataCurahHujan();
-  //   getDataKelembapanTanah();
-  //   getDataKemiringan();
-  //   getDataPergeseranTanah();
-  //   getDataStatus();
 
   getDataPerangkat1();
   getDataPerangkat2();
@@ -146,83 +115,11 @@ const Dashboard = ({navigation}) => {
   }
 
 
-
-
-  // const getDataCurahHujan = () => {
-  //   firebase.database()
-  //     .ref('Sensor/rtcurahhujan')
-  //     .on('value', (res) => {
-  //       console.log('Data Realtime : ', res.val());
-  //       if (res.val()) {
-  //         setIndikatorsHujan(res.val());
-  //       }
-  //     });
-  // };
-  // const getDataKelembapanTanah = () => {
-  //   firebase.database()
-  //     .ref('Sensor/rtkelembapantanah')
-  //     .on('value', (res) => {
-  //       console.log('Data Realtime : ', res.val());
-  //       if (res.val()) {
-  //         setIndikatorsKelembapan(res.val());
-  //       }
-  //     });
-  // };
-
-  // const getDataKemiringan = () => {
-  //   firebase.database()
-  //     .ref('Sensor/rtkemiringan')
-  //     .on('value', (res) => {
-  //       console.log('Data Realtime Kemiringan : ', res.val());
-  //       if (res.val()) {
-  //         setIndikatorsKemiringan(res.val());
-  //       }
-  //     });
-  // };
-
-  // const getDataPergeseranTanah = () => {
-  //   firebase.database()
-  //     .ref('Sensor/rtpergeserantanah')
-  //     .on('value', (res) => {
-  //       console.log('Data Realtime : ', res.val());
-  //       if (res.val()) {
-  //         setIndikatorsPergeseranTanah(res.val());
-  //       }
-  //     });
-  // };
-
-  // const getDataStatus = () => {
-  //   firebase.database()
-  //     .ref('status')
-  //     .on('value', (res) => {
-  //       console.log('Data Status : ', res.val());
-  //       if (res.val()) {
-  //         setIndikatorsStatus(res.val());
-  //       }
-  //     });
-  // };
-
-  // firebase.database()
-  //   .ref('status/1/status')
-  //   .on('value', (res) => {
-  //     var inputStatus = res.val();
-  //     statusIndikator = inputStatus;
-  //   });
-
-  // console.log(statusIndikator);
-
-  // if (statusIndikator === 'bahaya') {
-  //   showNotification('Alerty', 'Status Bahaya');
-  // }
-  // if (statusIndikator === 'waspada') {
-  //   showNotification('Alerty', 'Status Waspada');
-  // }
-
   return (
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.textHeader}>Dashboard</Text>
-          <BtnSignOut onPress={signOut} />
+          
         </View>
         <Gap height={20} />
        <View style={styles.content}>
