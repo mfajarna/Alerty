@@ -2,16 +2,16 @@ export const data = [
     {
         id: 0,
         coords:{
-            latitude: -7.1880113,
-            longitude : 107.6306125,   
+            latitude: -6.6639748597510104,
+            longitude: 110.89615712393828
         },
         nama: 'Perangkat 1'
     },
         {
         id: 1,
         coords:{ 
-            latitude: -7.187863602088806,
-            longitude : 107.62958294045934,
+            latitude: -6.665118366643557,
+            longitude : 110.89623585994238
             
         },
         nama: 'Perangkat 2'
@@ -19,8 +19,8 @@ export const data = [
         {
         id: 2,
         coords:{
-            latitude: -7.187028006471592,
-            longitude : 107.62946492326162,
+            latitude: -6.66538964577073,
+            longitude : 110.89514416825693
             
         },
         nama: 'Perangkat 3'
@@ -28,8 +28,8 @@ export const data = [
         {
         id: 3,
         coords:{
-            latitude: -7.187156108040515,
-            longitude : 107.63088190333157,
+            latitude: -6.664481658695943,
+            longitude : 110.89518968684962
            
         },
          nama: 'Perangkat 4'

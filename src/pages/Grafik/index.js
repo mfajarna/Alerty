@@ -10,20 +10,20 @@ const Grafik = () => {
   var[coordinatesMap,setCoordinatesMap] = useState(
     [
     {
-      latitude: -7.1880113,
-      longitude: 107.6306125
+      latitude: -6.6639748597510104,
+      longitude: 110.89615712393828
     },
     {
-      latitude: -7.187863602088806,
-      longitude : 107.62958294045934
+      latitude: -6.665118366643557,
+      longitude : 110.89623585994238
     },
     {
-      latitude: -7.187028006471592,
-      longitude : 107.62946492326162
+      latitude: -6.66538964577073,
+      longitude : 110.89514416825693
     },
     {
-      latitude: -7.187156108040515,
-      longitude : 107.63088190333157
+      latitude: -6.664481658695943,
+      longitude : 110.89518968684962
     }
   ])
 
@@ -36,8 +36,8 @@ const Grafik = () => {
         <MapView
                         style={StyleSheet.absoluteFill}
                             initialRegion={{
-                            latitude: -7.1880113,
-                            longitude: 107.6306125,
+                            latitude: -6.6639748597510104,
+                            longitude: 110.89615712393828,
                             latitudeDelta: 0.009,
                             longitudeDelta: 0.009
                         }}
